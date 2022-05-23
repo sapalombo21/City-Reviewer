@@ -4,4 +4,5 @@ const cityCtrl = require('../../controllers/city')
 
 router.get('/', cityCtrl.index())
 
+
 module.exports = router;
