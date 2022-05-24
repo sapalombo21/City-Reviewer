@@ -25,11 +25,11 @@ export async function search(params) {
             'X-RapidAPI-Key' : 'b7ac1adda7mshc1c3109df8bc17bp1cee70jsnee366e39337d'
         }
     }
-    axios.request(options).then(function (response) {
-        console.log(response.data)
+    return axios.request(options).then(function (response) {
+        console.log(response, "response data")
         return response.data
     }).catch(function (error) {
-        console.log(error)
+        console.log(error, "error")
         return error
     })
 }

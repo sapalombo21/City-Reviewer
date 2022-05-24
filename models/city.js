@@ -4,7 +4,7 @@ const citySchema = mongoose.Schema({
     name: String,
     population: Number,
     country: String,
-    countrycode: String,
+    countryCode: String,
     region: String,
     regionCode: String,
     latitude: Number,
