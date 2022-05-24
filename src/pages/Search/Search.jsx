@@ -3,14 +3,17 @@ import { Search, Grid, Header, Segment } from "semantic-ui-react";
 import { useParams } from "react-router-dom";
 import * as cityAPI from "../../utils/cityService";
 import SearchFeed from "../../components/SearchFeed/SearchFeed";
+import SearchForm from "../../components/SearchForm/SearchForm"
 
 export default function CitySearch() {
   const [search, setSearch] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [query, setQuery] = useState('');
   async function doSearch() {
     try {
-      const results = await cityAPI.search();
+      setLoading(true)
+      const results = await cityAPI.search(query);
       console.log(results, "here are the results");
       setLoading(false);
       setSearch(results.data);
@@ -22,6 +25,12 @@ export default function CitySearch() {
   useEffect(() => {
     doSearch();
   }, []);
+
+  function handleSubmit(q) {
+    console.log("submit pressed")
+    setQuery(q);
+    doSearch();
+  }
   if (error) {
     return <h1>{error}</h1>;
   }
@@ -29,9 +38,9 @@ export default function CitySearch() {
     return <h1>Loading...</h1>;
   }
   return (
-    <Grid>
-      <Grid.Column width={6}>
-        <Search placeholder="Search for Cities..." />
+    <Grid centered>
+      <Grid.Column width={12}>
+        <SearchForm handleSubmit={handleSubmit}/>
         <SearchFeed cities={search} />
       </Grid.Column>
     </Grid>
