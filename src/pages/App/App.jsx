@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes , useParams} from "react-router-dom";
 import "./App.css";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import userService from "../../utils/userService";
 import CityFeed from "../CityFeed/CityFeed";
 import CitySearch from "../Search/Search"
+import CityDetail from "../CityDetail/CityDetail"
+import cityService from "../../utils/cityService"
 
 function App() {
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
@@ -20,7 +22,7 @@ function App() {
     userService.logout();
     setUser(null);
   }
-
+  const params = useParams();
   if (user) {
     return (
       <Routes>
@@ -34,6 +36,7 @@ function App() {
           element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
         />
         <Route path="/search" element={<CitySearch />} />
+        <Route path="/:geoDBId" element={<CityDetail/>}/>
       </Routes>
     );
   }

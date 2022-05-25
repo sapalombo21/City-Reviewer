@@ -2,7 +2,8 @@ const City = require('../models/city');
 
 module.exports = {
     index,
-    create
+    create,
+    detail
 }
 
 async function create(req, res){
@@ -25,5 +26,18 @@ async function index(req, res) {
         res.status(200).json({cities})
     } catch (err) {
         console.log(err, 'this should not happen')
+    }
+}
+
+async function detail(req, res) {
+    try{
+        const city = await City.findOne({geoDBId: req.params.geoDBId})
+        // find a city by the url parameter
+        if (!city) return res.status(404).json({err: "City page does not exist"})
+
+        res.status(200).json({city: city})
+    } catch (err) {
+        console.log(err)
+        res.status(400).json({err})
     }
 }
