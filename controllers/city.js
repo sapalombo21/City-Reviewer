@@ -6,9 +6,9 @@ module.exports = {
 }
 
 async function create(req, res){
-    console.log(req.file, req.body, "this is the create method", req.user)
+    console.log(req.file, req.data, "this is the create method", req.user)
     console.log("req.body below")
-    console.log(typeof req.body)
+    console.log(typeof req.data)
     try {
         const city = await City.create(req.body)
         console.log(city, "here is the new city model")

@@ -41,8 +41,9 @@ export async function create(city) {
         method: "POST",
         headers: {
             "Authorization" : "Bearer " + tokenService.getToken(),
+            "Content-Type" : "application/json"
         },
-        body: city,
+        body: JSON.stringify(city),
     }).then(res => {
         if (res.ok) return res.json();
         throw new Error('Bad Credentials! CHECK THE TERMINAL')

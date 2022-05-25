@@ -5,16 +5,8 @@ import * as cityAPI from "../../utils/cityService"
 export default function SearchFeed({cities}) {
     async function create(city) {
         console.log(city, "this is data being passed to button")
-        const formData = new FormData();
-        for (let fieldName in city) {
-            console.log(fieldName, "field name in city")
-            console.log(city[fieldName], "data for field ", fieldName)
-            formData.append(fieldName, city[fieldName]);
-        }
-        for (var key of formData.entries()) {
-            console.log(key[0] + ', ' + key[1]);
-        }
-        cityAPI.create(formData)
+        const data = await cityAPI.create(city)
+        console.log(data)
     }
     let region = '';
     const cityMap = cities.map((city, idx) => {
