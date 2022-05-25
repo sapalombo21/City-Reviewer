@@ -5,11 +5,13 @@ module.exports = {
     create
 }
 
-function create(req, res){
+async function create(req, res){
     console.log(req.file, req.body, "this is the create method", req.user)
+    console.log("req.body below")
+    console.log(typeof req.body)
     try {
         const city = await City.create(req.body)
-        console.log(city)
+        console.log(city, "here is the new city model")
         res.status(201).json({city:city})
     } catch (err) {
         console.log(err)

@@ -25,7 +25,7 @@ export default function CitySearch() {
   useEffect(() => {
     doSearch();
   }, []);
-
+  
   function handleSubmit(q) {
     console.log("submit pressed")
     setQuery(q);

@@ -1,7 +1,7 @@
 import tokenService from "./tokenService";
 const axios = require('axios')
 
-const BASE_URL = "/";
+const BASE_URL = "/api/city";
 
 export async function getAll() {
     return fetch(BASE_URL, {
@@ -31,5 +31,20 @@ export async function search(params) {
     }).catch(function (error) {
         console.log(error, "error")
         return error
+    })
+}
+
+export async function create(city) {
+    console.log(city, "city data sent to cityService api")
+    
+    return fetch(BASE_URL, {
+        method: "POST",
+        headers: {
+            "Authorization" : "Bearer " + tokenService.getToken(),
+        },
+        body: city,
+    }).then(res => {
+        if (res.ok) return res.json();
+        throw new Error('Bad Credentials! CHECK THE TERMINAL')
     })
 }
