@@ -6,11 +6,11 @@ module.exports = {
 }
 
 async function create(req, res){
-    console.log(req.file, req.data, "this is the create method", req.user)
+    console.log(req.file, req.body, "this is the create method", req.user)
     console.log("req.body below")
-    console.log(typeof req.data)
+    console.log(typeof req.body)
     try {
-        const city = await City.create(req.body)
+        const city = await City.findOneOrCreate({geoDBId: req.body.geoDBId}, req.body)
         console.log(city, "here is the new city model")
         res.status(201).json({city:city})
     } catch (err) {
