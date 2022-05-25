@@ -5,6 +5,8 @@ import * as cityAPI from "../../utils/cityService"
 export default function SearchFeed({cities}) {
     async function create(city) {
         console.log(city, "this is data being passed to button")
+        city.geoDBId = city.id // adds the id to the data being passed to be used later
+        console.log(city)
         const data = await cityAPI.create(city)
         console.log(data)
     }
