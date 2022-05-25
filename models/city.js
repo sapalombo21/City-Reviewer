@@ -1,5 +1,12 @@
 const mongoose = require('mongoose');
 
+
+const reviewScema = mongoose.Schema({
+    username: String,
+    userId: {type: mongoose.Schema.Types.ObjectId},
+    review: String
+})
+
 const citySchema = mongoose.Schema({
     name: String,
     population: Number,
@@ -10,7 +17,8 @@ const citySchema = mongoose.Schema({
     latitude: Number,
     longitude: Number,
     wikiDataId: String,
-    geoDBId: Number
+    geoDBId: Number,
+    reviews: [reviewScema]
 })
 
 module.exports = mongoose.model("City", citySchema)
