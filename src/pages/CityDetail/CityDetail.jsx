@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as cityAPI from "../../utils/cityService";
+import CityCard from "../../components/CityCard/CityCard"
+import ReviewForm from "../../components/ReviewForm/ReviewForm"
+import * as reviewAPI from "../../utils/reviewsService"
+
 export default function CityDetail(props) {
   const { geoDBId } = useParams();
   const [city, setCity] = useState({});
@@ -20,6 +24,16 @@ export default function CityDetail(props) {
   useEffect(() => {
     getCity();
   }, []);
+
+  async function handleAddReview(review) {
+    try{
+        setLoading(true)
+        const data = await reviewAPI.create(city._id, review);
+    } catch (err) {
+        console.log(err.message)
+        setError(err.message)
+    }
+  }
   if (loading) {
     return <h1>Loading...</h1>;
   }
@@ -28,7 +42,8 @@ export default function CityDetail(props) {
   }
   return (
     <>
-      <h1>{city.name}</h1>
+      <CityCard city={city} />
+      <ReviewForm handleAddReview={handleAddReview}/>
     </>
   );
 }

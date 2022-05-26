@@ -24,12 +24,12 @@ export default function CitySearch() {
   }
   useEffect(() => {
     doSearch();
-  }, []);
+  }, [query]); // hopefully will show the data immediatly 
   
   function handleSubmit(q) {
     console.log("submit pressed")
     setQuery(q);
-    doSearch();
+    // doSearch();
   }
   if (error) {
     return <h1>{error}</h1>;
