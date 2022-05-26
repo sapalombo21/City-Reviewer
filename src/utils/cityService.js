@@ -2,6 +2,7 @@ import tokenService from "./tokenService";
 const axios = require('axios')
 
 const BASE_URL = "/api/city/";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 export async function getAll() {
     return fetch(BASE_URL, {
@@ -22,7 +23,7 @@ export async function search(params) {
         params: {limit: '10', namePrefix: params, sort: '-population'},
         headers: {
             'X-RapidAPI-Host' : 'wft-geo-db.p.rapidapi.com',
-            'X-RapidAPI-Key' : `${process.env.API_KEY}`
+            'X-RapidAPI-Key' : process.env.REACT_APP_API_KEY,
         }
     }
     return axios.request(options).then(function (response) {
