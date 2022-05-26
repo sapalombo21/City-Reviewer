@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import * as cityAPI from "../../utils/cityService";
+import CityCard from "../../components/CityCard/CityCard";
+import { Card, Grid } from "semantic-ui-react";
+import PageHeader from "../../components/Header/Header";
 
-export default function CityFeed() {
+export default function CityFeed({ user, handleLogout }) {
   const [cities, setCities] = useState([]);
   const [error, setError] = useState("");
   async function getCities() {
@@ -19,8 +22,26 @@ export default function CityFeed() {
     getCities();
     console.log(cities, "this is the cities");
   }, []);
+  const cityMap = cities.map((city, idx) => {
+    return <CityCard key={idx} city={city} feed={true}/>;
+  });
   if (cities) {
-    return <h1>This is the city feed</h1>;
+    return (
+      <Grid centered>
+        <Grid.Row>
+          <Grid.Column>
+            <PageHeader handleLogout={handleLogout} user={user} />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column style={{maxWidth: 750}}>
+            <Card.Group itemsPerRow={4} stackable>
+              {cityMap}
+            </Card.Group>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    );
   }
-  return <h1>No cities found</h1>
+  return <h1>No cities found</h1>;
 }
