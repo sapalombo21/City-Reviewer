@@ -22,7 +22,7 @@ export async function search(params) {
         params: {limit: '10', namePrefix: params, sort: '-population'},
         headers: {
             'X-RapidAPI-Host' : 'wft-geo-db.p.rapidapi.com',
-            'X-RapidAPI-Key' : 'b7ac1adda7mshc1c3109df8bc17bp1cee70jsnee366e39337d'
+            'X-RapidAPI-Key' : `${process.env.API_KEY}`
         }
     }
     return axios.request(options).then(function (response) {
