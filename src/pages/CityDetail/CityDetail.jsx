@@ -6,8 +6,10 @@ import ReviewForm from "../../components/ReviewForm/ReviewForm";
 import * as reviewAPI from "../../utils/reviewsService";
 import ReviewFeed from "../../components/ReviewFeed/ReviewFeed";
 import { Grid } from "semantic-ui-react";
+import PageHeader from "../../components/Header/Header"
+import Loader from "../../components/Loader/Loader"
 
-export default function CityDetail(props) {
+export default function CityDetail({user, handleLogout}) {
   const { geoDBId } = useParams();
   const [city, setCity] = useState({});
   const [error, setError] = useState("");
@@ -38,7 +40,7 @@ export default function CityDetail(props) {
     }
   }
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <Loader />
   }
   if (error) {
     return <h1>{error}</h1>;
@@ -47,7 +49,7 @@ export default function CityDetail(props) {
     <Grid divided='vertically' centered>
       <Grid.Row centered>
         <Grid.Column>
-          <h1>This is the header</h1>
+          <PageHeader user={user} handleLogout={handleLogout} />
         </Grid.Column>
       </Grid.Row>
       <Grid.Row verticalAlign="middle" centered columns={2}>

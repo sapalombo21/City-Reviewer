@@ -1,8 +1,10 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
 export default function CityCard({ city }) {
-  let region = '';
-  city.countryCode == "US" ? region = "State" : region = "Region";
+  let region = 'Region';
+  city.countryCode == "US" ? region = "State" : region = region;
+  city.countryCode == "CA" ? region = "Province" : region = region;
+  city.countryCode == "JP" ? region = "Prefecture" : region = region;
   return (
     <Card key={city.geoDBId} raised>
       <Card.Content textAlign="center">

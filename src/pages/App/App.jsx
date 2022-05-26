@@ -35,8 +35,8 @@ function App() {
           path="/signup"
           element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
         />
-        <Route path="/search" element={<CitySearch />} />
-        <Route path="/:geoDBId" element={<CityDetail/>}/>
+        <Route path="/search" element={<CitySearch user={user} handleLogout={handleLogout}/>} />
+        <Route path="/:geoDBId" element={<CityDetail user={user} handleLogout={handleLogout}/>}/>
       </Routes>
     );
   }
