@@ -1,7 +1,8 @@
 import React from "react";
-import { Card } from "semantic-ui-react";
+import { Card, Button, CardContent } from "semantic-ui-react";
 
-export default function ReviewFeed({ reviews }) {
+export default function ReviewFeed({ reviews, user, handleDeleteReview }) {
+
   const cards = reviews.map((review, idx) => {
     return (
       <Card key={review._id} raised>
@@ -9,6 +10,9 @@ export default function ReviewFeed({ reviews }) {
           <Card.Header>{review.username}</Card.Header>
         </Card.Content>
         <Card.Content textAlign="center">{review.review}</Card.Content>
+        { review.userId === user._id ? <Card.Content>
+          <Button onClick={()=>handleDeleteReview(review._id)}>Delete</Button>
+        </Card.Content>: null}
       </Card>
     );
   });
