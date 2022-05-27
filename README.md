@@ -1,4 +1,4 @@
-# My Game Reviews Website
+# My City Reviews Website
 https://my-city-reviews.herokuapp.com/
 ## Website overview
 This website allows the user to search through a database of cities and create reviews for others to see.
@@ -26,7 +26,7 @@ This website allows the user to search through a database of cities and create r
 [Wireframe](https://www.figma.com/file/dek7vLHMPiYG9b76OiPPNU/city-review?node-id=0%3A1)
 ## Next Steps
 * Learn how to use the WikiData API (documentation is terrible)
-* WikiData will allow me to find official photos and local attractions
+* WikiData is terrible and defies all programming standards, I will use google instead
 * Rating system, user profiles, visual enhancements
 * More functionality for better user experience
 

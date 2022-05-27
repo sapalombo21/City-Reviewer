@@ -61,3 +61,20 @@ export async function detail(geoDBId) {
         throw new Error("Bad credentials! Check terminal")
     })
 }
+
+export async function getNearby(geoDBId) {
+    const options = {
+        method: "GET",
+        url: `https://wft-geo-db.p.rapidapi.com/v1/geo/cities/${geoDBId}/nearbyCities`,
+        params : {limit: "10", sort: '-population'},
+        headers : {
+            'X-RapidAPI-Host' : 'wft-geo-db.p.rapidapi.com',
+            'X-RapidAPI-Key' : process.env.REACT_APP_API_KEY,
+        }
+    }
+    return axios.request(options).then(function (response) {
+        return response.data
+    }).catch (function (err) {
+        return error
+    })
+}

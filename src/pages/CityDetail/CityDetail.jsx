@@ -49,6 +49,12 @@ export default function CityDetail({ user, handleLogout }) {
       setError(err.message);
     }
   }
+  // async function getNearby() {
+  //   try {
+  //     const data = await cityAPI.getNearby(city.geoDBId)
+
+  //   }
+  // }
   if (loading) {
     return <Loader />;
   }
@@ -77,6 +83,7 @@ export default function CityDetail({ user, handleLogout }) {
             user={user}
             handleDeleteReview={handleDeleteReview}
           />
+          <Button onClick={}
         </Grid.Column>
       </Grid.Row>
     </Grid>
