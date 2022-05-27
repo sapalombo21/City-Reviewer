@@ -3,13 +3,13 @@ https://my-city-reviews.herokuapp.com/
 ## Website overview
 This website allows the user to search through a database of cities and create reviews for others to see.
 ## Screenshots
-![screenshot1](public/Screenshot 2022-05-26 at 19-44-15 My City Review.png)
-![screenshot2](public/Screenshot 2022-05-26 at 19-46-41 My City Review.png)
+![screenshot1](public/homepage.png)
+![screenshot2](public/search.png)
 ## Technologies Used
 * Node.js
 * Mongoose
 * Atlus Database
-* geoDB City API, https://rapidapi.com/wirefreethought/api/geodb-cities/details
+* geoDB City API, [RapidAPI](https://rapidapi.com/wirefreethought/api/geodb-cities/details)
 * React
 * Semantic UI
 * Heroku
@@ -21,7 +21,7 @@ This website allows the user to search through a database of cities and create r
 ## Link to trello
 [Trello](https://trello.com/b/2F9duqRE/city-reviewer)
 ## ERD
-![ERD](public/Screenshot 2022-05-26 at 19-47-30 City Review ERD Lucidchart.png)
+![ERD](public/erd.png)
 ## Wireframe
 [Wireframe](https://www.figma.com/file/dek7vLHMPiYG9b76OiPPNU/city-review?node-id=0%3A1)
 ## Next Steps
