@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import * as cityAPI from "../../utils/cityService";
 import CityCard from "../../components/CityCard/CityCard";
 import ReviewForm from "../../components/ReviewForm/ReviewForm";
 import * as reviewAPI from "../../utils/reviewsService";
 import ReviewFeed from "../../components/ReviewFeed/ReviewFeed";
-import { Grid } from "semantic-ui-react";
+import { Grid, Button } from "semantic-ui-react";
 import PageHeader from "../../components/Header/Header";
 import Loader from "../../components/Loader/Loader";
 
 export default function CityDetail({ user, handleLogout }) {
+  const navigate = useNavigate();
   const { geoDBId } = useParams();
   const [city, setCity] = useState({});
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   async function getCity() {
     try {
+      console.log(geoDBId, "GEO DB ID")
       const data = await cityAPI.detail(geoDBId);
       console.log(data, "city detail page.");
       setCity(data.city);
@@ -49,12 +51,8 @@ export default function CityDetail({ user, handleLogout }) {
       setError(err.message);
     }
   }
-  // async function getNearby() {
-  //   try {
-  //     const data = await cityAPI.getNearby(city.geoDBId)
+  
 
-  //   }
-  // }
   if (loading) {
     return <Loader />;
   }
@@ -83,7 +81,11 @@ export default function CityDetail({ user, handleLogout }) {
             user={user}
             handleDeleteReview={handleDeleteReview}
           />
-          <Button onClick={}
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column>
+          <Button onClick={()=>navigate(`/nearby/${city.geoDBId}`)} >Nearby Cities</Button>
         </Grid.Column>
       </Grid.Row>
     </Grid>

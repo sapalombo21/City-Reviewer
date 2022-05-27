@@ -8,6 +8,7 @@ import CityFeed from "../CityFeed/CityFeed";
 import CitySearch from "../Search/Search"
 import CityDetail from "../CityDetail/CityDetail"
 import cityService from "../../utils/cityService"
+import CityNearby from "../CityNearby/CityNearby"
 
 function App() {
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
@@ -37,6 +38,7 @@ function App() {
         />
         <Route path="/search" element={<CitySearch user={user} handleLogout={handleLogout}/>} />
         <Route path="/:geoDBId" element={<CityDetail user={user} handleLogout={handleLogout}/>}/>
+        <Route path="/nearby/:geoDBId" element={<CityNearby user={user} handleLogout={handleLogout}/>} />
       </Routes>
     );
   }
