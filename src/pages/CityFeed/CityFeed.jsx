@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as cityAPI from "../../utils/cityService";
 import CityCard from "../../components/CityCard/CityCard";
-import { Card, Grid } from "semantic-ui-react";
+import { Card, Grid, Image } from "semantic-ui-react";
 import PageHeader from "../../components/Header/Header";
 
 export default function CityFeed({ user, handleLogout }) {
@@ -28,12 +28,15 @@ export default function CityFeed({ user, handleLogout }) {
   if (cities) {
     return (
       <Grid centered>
-        <Grid.Row>
+        <Grid.Row color="black">
           <Grid.Column>
             <PageHeader handleLogout={handleLogout} user={user} />
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row>
+        <Grid.Row color="grey">
+          <Image src="https://wallpaperaccess.com/full/1782494.jpg" size="large"></Image>
+        </Grid.Row>
+        <Grid.Row color="grey">
           <Grid.Column style={{maxWidth: 750}}>
             <Card.Group itemsPerRow={4} stackable>
               {cityMap}

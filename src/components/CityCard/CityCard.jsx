@@ -4,9 +4,9 @@ import {useNavigate} from "react-router-dom"
 export default function CityCard({ city, feed }) {
   const navigate = useNavigate();
   let region = "Region";
-  city.countryCode == "US" ? (region = "State") : (region = region);
-  city.countryCode == "CA" ? (region = "Province") : (region = region);
-  city.countryCode == "JP" ? (region = "Prefecture") : (region = region);
+  city.countryCode === "US" ? (region = "State") : (region = region);
+  city.countryCode === "CA" ? (region = "Province") : (region = region);
+  city.countryCode === "JP" ? (region = "Prefecture") : (region = region);
   return (
     <Card key={city.geoDBId} raised>
       <Card.Content textAlign="center">
